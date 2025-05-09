@@ -9,6 +9,7 @@ from keras.src.optimizers import RMSprop
 def load_and_preprocess_text(filepath: str) -> List[str]:
     with open(filepath, encoding='utf-8') as file:
         text = file.read().lower()
+        text = text.replace("—", "")
     return text.split()
 
 
@@ -91,8 +92,8 @@ def generate_text(
         sentence_words = sentence_words[1:] + [next_word]
 
     formatted_text = [
-        ' '.join(generated[i:i + 15])
-        for i in range(0, len(generated), 15)
+        ' '.join(generated[i:i + 4])
+        for i in range(0, len(generated), 4)
     ]
     return '\n'.join(formatted_text)
 
